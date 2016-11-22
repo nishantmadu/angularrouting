@@ -1,5 +1,5 @@
 (function() {
-  angular.module("routing", ["header", "home", "login", "register", "ui.router"]);
+  angular.module("routing", ["header", "home", "login", "register", "custom", "ui.router"]);
   angular.module("routing")
     .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
       var homeObj = {
@@ -24,9 +24,16 @@
         controller: "loginCtrl"
       }
 
+      var loginDetails = {
+        templateUrl: "app/loginDetails/loginDetails.html",
+        url: "/loginDetails"
+      }
+
       $stateProvider.state("home", homeObj);
-      $stateProvider.state("register", registerObj);
-      $stateProvider.state("login", loginObj);
+      $stateProvider.state("home.register", registerObj);
+      $stateProvider.state("home.login", loginObj);
+      $stateProvider.state("home.login.loginDetails", loginDetails);
+
     }]);
 
 })();
